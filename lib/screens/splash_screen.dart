@@ -19,8 +19,12 @@ class _SplashScreenState extends State<SplashScreen> {
 
   _handleStartUp(context) {
     Future.delayed(const Duration(seconds: 4), () {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+      Navigator.pushReplacement<void, void>(
+        context,
+        MaterialPageRoute<void>(
+          builder: (BuildContext context) => const HomeScreen(),
+        ),
+      );
     });
   }
 
@@ -28,8 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: appBackgroundColor,
-      body: Center(
-          child: Image(image: AssetImage(Appset.applogo))),
+      body: Center(child: Image(image: AssetImage(Appset.applogo))),
     );
   }
 }

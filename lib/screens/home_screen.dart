@@ -4,7 +4,6 @@ import 'package:sharpnews/constants/images.dart';
 import 'package:sharpnews/widgets/bottom_nav_container.dart';
 import 'package:sharpnews/widgets/latest_news.dart';
 import 'package:sharpnews/widgets/news_source_and_time.dart';
-
 import '../constants/styles.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -85,15 +84,22 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(
                         height: 16.0,
                       ),
-                      Container(
-                        height: 200,
-                        width: 305,
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(8)),
-                          image: DecorationImage(
-                            image: AssetImage(Appset.appHotTopicsImage),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              height: 200,
+                              width: 305,
+                              decoration: const BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(8)),
+                                image: DecorationImage(
+                                  image: AssetImage(Appset.appHotTopicsImage),
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
+                        ],
                       ),
                       const SizedBox(
                         height: 40.0,
@@ -147,6 +153,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 right: 55,
                 top: 377,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
                       'Massa tortor nibh nulla condimentum imperdiet scelerisque...',
