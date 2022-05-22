@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Bottom_nav_container extends StatelessWidget {
-  const Bottom_nav_container({
+class BottomNavContainer extends StatelessWidget {
+  const BottomNavContainer({
     Key? key,
   }) : super(key: key);
 

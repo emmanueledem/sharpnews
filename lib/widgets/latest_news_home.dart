@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sharpnews/widgets/news_source_and_time.dart';
 
-class LatestNews extends StatelessWidget {
-  LatestNews(
+class LatestNewsHome extends StatelessWidget {
+  LatestNewsHome(
       {Key? key,
       required this.image,
       required this.title,

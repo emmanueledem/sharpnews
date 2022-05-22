@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sharpnews/constants/colors.dart';
 import 'package:sharpnews/constants/images.dart';
+import 'package:sharpnews/screens/latest_news_screen.dart';
 import 'package:sharpnews/widgets/bottom_nav_container.dart';
-import 'package:sharpnews/widgets/latest_news.dart';
+import 'package:sharpnews/widgets/latest_news_home.dart';
 import 'package:sharpnews/widgets/news_source_and_time.dart';
 import '../constants/styles.dart';
 
@@ -25,131 +26,135 @@ class _HomeScreenState extends State<HomeScreen> {
             Padding(
               padding: const EdgeInsets.only(top: 49, left: 43, right: 42),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  const Text(
+                    'Good Morning',
+                    style: TextStyle(
+                        fontSize: 32,
+                        fontStyle: FontStyle.normal,
+                        fontWeight: FontWeight.w700,
+                        color: Color(0xffFFFFFF)),
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  const Text(
+                    'Explore the world by one Tap',
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontStyle: FontStyle.normal,
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xffFFFFFF)),
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      const Text(
-                        'Good Morning',
-                        style: TextStyle(
-                            fontSize: 32,
-                            fontStyle: FontStyle.normal,
-                            fontWeight: FontWeight.w700,
-                            color: Color(0xffFFFFFF)),
+                      Expanded(
+                        child: Form(
+                          child: TextFormField(
+                            decoration: kinputdecorationStyle,
+                          ),
+                        ),
                       ),
                       const SizedBox(
-                        height: 8,
+                        width: 24,
                       ),
-                      const Text(
-                        'Explore the world by one Tap',
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontStyle: FontStyle.normal,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xffFFFFFF)),
-                      ),
-                      const SizedBox(
-                        height: 24,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Expanded(
-                            child: Form(
-                              child: TextFormField(
-                                decoration: kinputdecorationStyle,
-                              ),
+                      const Image(
+                          width: 32,
+                          height: 32,
+                          image: AssetImage('assets/app_icons/menu.png'))
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 16.0,
+                  ),
+                  const Text(
+                    'Hot Topics',
+                    style: TextStyle(
+                        fontSize: 36,
+                        fontStyle: FontStyle.normal,
+                        fontWeight: FontWeight.w700,
+                        color: Color(0xffFFFFFF)),
+                  ),
+                  const SizedBox(
+                    height: 16.0,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          height: 200,
+                          width: 305,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(8)),
+                            image: DecorationImage(
+                              image: AssetImage(Appset.appHotTopicsImage),
                             ),
                           ),
-                          const SizedBox(
-                            width: 24,
-                          ),
-                          const Image(
-                              width: 32,
-                              height: 32,
-                              image: AssetImage('assets/app_icons/menu.png'))
-                        ],
+                        ),
                       ),
-                      const SizedBox(
-                        height: 16.0,
-                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 40.0,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
                       const Text(
-                        'Hot Topics',
+                        'Latest News',
                         style: TextStyle(
                             fontSize: 36,
                             fontStyle: FontStyle.normal,
                             fontWeight: FontWeight.w700,
                             color: Color(0xffFFFFFF)),
                       ),
-                      const SizedBox(
-                        height: 16.0,
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Container(
-                              height: 200,
-                              width: 305,
-                              decoration: const BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(8)),
-                                image: DecorationImage(
-                                  image: AssetImage(Appset.appHotTopicsImage),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 40.0,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
-                          Text(
-                            'Latest News',
-                            style: TextStyle(
-                                fontSize: 36,
-                                fontStyle: FontStyle.normal,
-                                fontWeight: FontWeight.w700,
-                                color: Color(0xffFFFFFF)),
-                          ),
-                          Image(
-                              width: 32,
-                              height: 32,
-                              image: AssetImage('assets/app_icons/Polygon.png'))
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 6.0,
-                      ),
-                      Row(
-                        children: [
-                          LatestNews(
-                            title: 'News Title Lorem Ipsum Dolor Sit Amet',
-                            image: Appset.appfighterImage,
-                            source: 'CNN UK',
-                            time: '1 Hour Ago',
-                          ),
-                          LatestNews(
-                            title: 'News Title Lorem Ipsum Dolor Sit Amet',
-                            image: Appset.appAthleteImage,
-                            source: 'CNN UK',
-                            time: '1 Hour Ago',
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 100,
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const LatestNewsScreen()),
+                          );
+                        },
+                        child: const Image(
+                            width: 32,
+                            height: 32,
+                            image: AssetImage('assets/app_icons/Polygon.png')),
                       )
                     ],
                   ),
+                  const SizedBox(
+                    height: 6.0,
+                  ),
+                  Row(
+                    children: [
+                      LatestNewsHome(
+                        title: 'News Title Lorem Ipsum Dolor Sit Amet',
+                        image: Appset.appfighterImage,
+                        source: 'CNN UK',
+                        time: '1 Hour Ago',
+                      ),
+                      LatestNewsHome(
+                        title: 'News Title Lorem Ipsum Dolor Sit Amet',
+                        image: Appset.appAthleteImage,
+                        source: 'CNN UK',
+                        time: '1 Hour Ago',
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 100,
+                  )
                 ],
               ),
             ),
             Positioned(
-                left: 54,
+                left: 70,
                 right: 55,
                 top: 377,
                 child: Column(
@@ -187,7 +192,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: const Padding(
                       padding:
                           EdgeInsets.symmetric(vertical: 16, horizontal: 39),
-                      child: Bottom_nav_container(),
+                      child: BottomNavContainer(),
                     ),
                   ),
                 ))
