@@ -2,7 +2,7 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:sharpnews/screens/splash_screen.dart';
 
-bool kReleaseMode = false;
+bool kReleaseMode = true;
 
 void main() {
   runApp(

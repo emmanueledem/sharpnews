@@ -173,12 +173,14 @@ class _ViewNewsState extends State<ViewNews> {
                     SizedBox(
                       width: 13,
                     ),
-                    SizedBox(
-                      width: 168,
-                      child: Divider(
-                        thickness: 1,
-                        height: 1,
-                        color: Color(0xffFFFFFF),
+                    Expanded(
+                      child: SizedBox(
+                        width: 168,
+                        child: Divider(
+                          thickness: 1,
+                          height: 1,
+                          color: Color(0xffFFFFFF),
+                        ),
                       ),
                     ),
                     SizedBox(height: 21)

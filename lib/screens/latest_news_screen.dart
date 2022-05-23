@@ -84,24 +84,6 @@ class _LatestNewsScreenState extends State<LatestNewsScreen> {
               ],
             ),
           ),
-          Positioned(
-              bottom: 32,
-              left: 24,
-              right: 24,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 24, right: 24),
-                child: Container(
-                  height: 56,
-                  width: 342,
-                  decoration: const BoxDecoration(
-                      color: appbusyColor,
-                      borderRadius: BorderRadius.all(Radius.circular(16))),
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 16, horizontal: 39),
-                    child: BottomNavContainer(),
-                  ),
-                ),
-              ))
         ],
       ),
     );

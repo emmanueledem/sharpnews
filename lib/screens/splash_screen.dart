@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sharpnews/constants/colors.dart';
 import 'package:sharpnews/constants/images.dart';
 import 'package:sharpnews/screens/home_screen.dart';
+import 'package:sharpnews/screens/welcome_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.pushReplacement<void, void>(
         context,
         MaterialPageRoute<void>(
-          builder: (BuildContext context) => const HomeScreen(),
+          builder: (BuildContext context) => const IntroScreen(),
         ),
       );
     });
