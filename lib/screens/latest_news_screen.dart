@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sharpnews/constants/colors.dart';
 import 'package:sharpnews/constants/styles.dart';
+import 'package:sharpnews/screens/view_news.dart';
 import 'package:sharpnews/widgets/all_latest_news.dart';
 import 'package:sharpnews/widgets/bottom_nav_container.dart';
 
@@ -69,8 +70,15 @@ class _LatestNewsScreenState extends State<LatestNewsScreen> {
                 ),
                 Expanded(
                     child: ListView(
-                  children: const [
-                    AllLatestNews(),
+                  children: [
+                    InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const ViewNews()));
+                        },
+                        child: const AllLatestNews()),
                   ],
                 )),
               ],

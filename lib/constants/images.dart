@@ -5,4 +5,5 @@ class Appset {
   static const appAthleteImage = 'assets/images/athletes_img.png';
   static const cricketMan = 'assets/images/cricket_man.png';
   static const ellipseImg = 'assets/images/Ellipse.png';
+  static const athletesImg = 'assets/images/view_news.png';
 }
