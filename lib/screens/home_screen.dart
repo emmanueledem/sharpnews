@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sharpnews/constants/colors.dart';
-import 'package:sharpnews/constants/images.dart';
-import 'package:sharpnews/screens/latest_news_screen.dart';
-import 'package:sharpnews/widgets/bottom_nav_container.dart';
-import 'package:sharpnews/widgets/latest_news_home.dart';
-import 'package:sharpnews/widgets/news_source_and_time.dart';
-import '../constants/styles.dart';
+import 'package:sharpnews/app/constants/colors.dart';
+import 'package:sharpnews/app/constants/images.dart';
+import 'package:sharpnews/app/widgets/latest_news_home.dart';
+import 'package:sharpnews/app/widgets/news_source_and_time.dart';
+import 'package:sharpnews/app/widgets/search_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -29,8 +27,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsets.only(right: 143, left: 24, top: 49),
+                        const EdgeInsets.only(right: 24, left: 24, top: 49),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: const [
                         Text(
                           'Good Morning',
@@ -57,29 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                   ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(left: 24, right: 24, top: 24),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Expanded(
-                          child: Form(
-                            child: TextFormField(
-                              decoration: kinputdecorationStyle,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 24,
-                        ),
-                        const Image(
-                            width: 32,
-                            height: 32,
-                            image: AssetImage('assets/app_icons/menu.png'))
-                      ],
-                    ),
-                  ),
+                  const SearchBar(),
                   const SizedBox(
                     height: 16.0,
                   ),
@@ -97,25 +74,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   const SizedBox(
                     height: 16.0,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 42, left: 42),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Container(
+                  Row(
+                    children: const [
+                      Expanded(
+                        child: Image(
                             height: 200,
                             width: 305,
-                            decoration: const BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(8)),
-                              image: DecorationImage(
-                                image: AssetImage(Appset.appHotTopicsImage),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                            image: AssetImage(Appset.appHotTopicsImage)),
+                      ),
+                    ],
                   ),
                   const SizedBox(
                     height: 40.0,
@@ -168,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               Positioned(
-                  left: 70,
+                  left: 54,
                   right: 55,
                   top: 377,
                   child: Column(

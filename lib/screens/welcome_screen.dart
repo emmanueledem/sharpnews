@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sharpnews/constants/colors.dart';
+import 'package:sharpnews/app/constants/colors.dart';
 import 'package:sharpnews/screens/latest_news_screen.dart';
 import 'package:sharpnews/screens/screens.dart';
 
@@ -37,7 +37,7 @@ class _IntroScreenState extends State<IntroScreen> {
         children: [
           _widgetOptions.elementAt(_selectedIndex),
           Padding(
-            padding: const EdgeInsets.only(bottom: 32.0, right: 24, left: 24),
+            padding: const EdgeInsets.only(bottom: 20.0, right: 24, left: 24),
             child: Align(
               alignment: const Alignment(0.0, 1.0),
               child: ClipRRect(

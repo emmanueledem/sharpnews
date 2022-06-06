@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sharpnews/constants/colors.dart';
-import 'package:sharpnews/constants/images.dart';
-import 'package:sharpnews/constants/styles.dart';
+import 'package:sharpnews/app/constants/styles.dart';
+import 'package:sharpnews/app/constants/colors.dart';
+import 'package:sharpnews/app/constants/images.dart';
 
 class ViewNews extends StatefulWidget {
   const ViewNews({Key? key}) : super(key: key);

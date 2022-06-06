@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sharpnews/constants/images.dart';
+import 'package:sharpnews/app/constants/images.dart';
 
 class AllLatestNews extends StatelessWidget {
   const AllLatestNews({

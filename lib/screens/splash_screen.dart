@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sharpnews/constants/colors.dart';
-import 'package:sharpnews/constants/images.dart';
-import 'package:sharpnews/screens/home_screen.dart';
+import 'package:sharpnews/app/constants/colors.dart';
+import 'package:sharpnews/app/constants/images.dart';
 import 'package:sharpnews/screens/welcome_screen.dart';
 
 class SplashScreen extends StatefulWidget {

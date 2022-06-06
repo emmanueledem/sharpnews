@@ -42,6 +42,13 @@ dependencies:
   rflutter_alert: ^2.0.4
   modal_progress_hud_nsn: ^0.1.0-nullsafety-1
   device_preview: ^1.0.0
+  shared_preferences: ^2.0.12
+  dio: ^4.0.6 
+  http_parser: ^4.0.1
+  flutter_dotenv: ^5.0.2 
+  gap: ^2.0.0
+  cached_network_image: ^3.1.0
+
 
 dev_dependencies:
   flutter_test:

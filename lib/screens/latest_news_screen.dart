@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:sharpnews/constants/colors.dart';
-import 'package:sharpnews/constants/styles.dart';
+import 'package:sharpnews/app/constants/colors.dart';
+import 'package:sharpnews/app/widgets/all_latest_news.dart';
+import 'package:sharpnews/app/widgets/search_bar.dart';
 import 'package:sharpnews/screens/view_news.dart';
-import 'package:sharpnews/widgets/all_latest_news.dart';
-import 'package:sharpnews/widgets/bottom_nav_container.dart';
 
 class LatestNewsScreen extends StatefulWidget {
   const LatestNewsScreen({Key? key}) : super(key: key);
@@ -17,14 +16,14 @@ class _LatestNewsScreenState extends State<LatestNewsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: appBackgroundColor,
-      body: Stack(
+      body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 49, left: 43, right: 42),
+            padding: const EdgeInsets.only(left: 24, right: 150, top: 49),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
+              children: const [
+                Text(
                   'Latest News',
                   style: TextStyle(
                       fontSize: 32,
@@ -32,10 +31,10 @@ class _LatestNewsScreenState extends State<LatestNewsScreen> {
                       fontWeight: FontWeight.w700,
                       color: Color(0xffFFFFFF)),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 8,
                 ),
-                const Text(
+                Text(
                   'Latest updates around the world',
                   style: TextStyle(
                       fontSize: 14,
@@ -43,33 +42,17 @@ class _LatestNewsScreenState extends State<LatestNewsScreen> {
                       fontWeight: FontWeight.w400,
                       color: Color(0xffFFFFFF)),
                 ),
-                const SizedBox(
-                  height: 24,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Expanded(
-                      child: Form(
-                        child: TextFormField(
-                          decoration: kinputdecorationStyle,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 24,
-                    ),
-                    const Image(
-                        width: 32,
-                        height: 32,
-                        image: AssetImage('assets/app_icons/menu.png'))
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
+              ],
+            ),
+          ),
+          const SearchBar(),
+          Padding(
+            padding: const EdgeInsets.only(top: 20, left: 23, right: 24),
+            child: Row(
+              children: [
                 Expanded(
                     child: ListView(
+                  shrinkWrap: true,
                   children: [
                     InkWell(
                         onTap: () {

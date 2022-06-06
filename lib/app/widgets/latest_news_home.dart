@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:sharpnews/app/widgets/news_source_and_time.dart';
 import 'package:sharpnews/screens/view_news.dart';
-import 'package:sharpnews/widgets/news_source_and_time.dart';
 
+// ignore: must_be_immutable
 class LatestNewsHome extends StatelessWidget {
   LatestNewsHome(
       {Key? key,

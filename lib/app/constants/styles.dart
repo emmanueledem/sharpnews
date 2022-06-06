@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sharpnews/constants/colors.dart';
+import 'package:sharpnews/app/constants/colors.dart';
 
 const kinputdecorationStyle = InputDecoration(
   fillColor: Colors.white,
