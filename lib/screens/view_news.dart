@@ -243,10 +243,10 @@ class ReadNewsScreenData {
       required this.ago,
       required this.content});
 
-  final String title;
-  final String description;
-  final String author;
-  final String image;
+  final String? title;
+  final String? description;
+  final String? author;
+  final String? image;
   final DateTime? ago;
-  final String content;
+  final String? content;
 }

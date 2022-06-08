@@ -1,4 +1,3 @@
-import 'package:logger/logger.dart';
 import 'package:sharpnews/model/news_model.dart';
 import 'package:sharpnews/model/source_model.dart';
 import 'package:sharpnews/services/news_service.dart';

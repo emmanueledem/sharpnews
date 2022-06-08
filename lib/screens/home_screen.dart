@@ -133,12 +133,12 @@ class _HomeScreenState extends State<HomeScreen> {
                               onTap: () {
                                 Navigator.pushNamed(context, RouteName.readNews,
                                     arguments: ReadNewsScreenData(
-                                        title: newsProvider.newsData![1].title!,
-                                        description: newsProvider.newsData![1].description!,
-                                        author: newsProvider.newsData![1].author!,
-                                        image: newsProvider.newsData![1].urlToImage!,
-                                        ago: DateTime.parse(newsProvider.newsData![1].publishedAt!),
-                                        content: newsProvider.newsData![1].content!,));
+                                        title: newsProvider.newsData![0].title!,
+                                        description: newsProvider.newsData![0].description!,
+                                        author: newsProvider.newsData![0].author!,
+                                        image: newsProvider.newsData![0].urlToImage!,
+                                        ago: DateTime.parse(newsProvider.newsData![0].publishedAt!),
+                                        content: newsProvider.newsData![0].content!,));
                               },
                               child: HotTopics(newsProvider: newsProvider),
                             ),

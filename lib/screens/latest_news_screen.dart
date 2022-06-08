@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:sharpnews/app/constants/colors.dart';
 import 'package:sharpnews/app/widgets/all_latest_news.dart';
 import 'package:sharpnews/app/widgets/search_bar.dart';
-import 'package:sharpnews/screens/view_news.dart';
 
 class LatestNewsScreen extends StatefulWidget {
   const LatestNewsScreen({Key? key}) : super(key: key);
