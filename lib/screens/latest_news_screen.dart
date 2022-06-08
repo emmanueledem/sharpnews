@@ -56,10 +56,10 @@ class _LatestNewsScreenState extends State<LatestNewsScreen> {
                   children: [
                     InkWell(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const ViewNews()));
+                          // Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //         builder: (context) => const ViewNews()));
                         },
                         child: const AllLatestNews()),
                   ],

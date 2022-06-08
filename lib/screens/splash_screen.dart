@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sharpnews/app/constants/colors.dart';
 import 'package:sharpnews/app/constants/images.dart';
-import 'package:sharpnews/screens/welcome_screen.dart';
+import 'package:sharpnews/view_models/splash/splash_view_model.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -17,15 +17,8 @@ class _SplashScreenState extends State<SplashScreen> {
     _handleStartUp(context);
   }
 
-  _handleStartUp(context) {
-    Future.delayed(const Duration(seconds: 4), () {
-      Navigator.pushReplacement<void, void>(
-        context,
-        MaterialPageRoute<void>(
-          builder: (BuildContext context) => const IntroScreen(),
-        ),
-      );
-    });
+  _handleStartUp(context) async {
+    await SplashViewModel().checkNewtwork(context: context);
   }
 
   @override

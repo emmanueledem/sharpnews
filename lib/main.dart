@@ -1,12 +1,16 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 import 'package:sharpnews/screens/splash_screen.dart';
 import 'package:sharpnews/view_models/news/news_view_model.dart';
 
 bool kReleaseMode = false;
 
-void main() {
+void main() async {
+    WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load();
+
   runApp(
     DevicePreview(
       builder: (context) => const MyApp(),
@@ -23,7 +27,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-       ChangeNotifierProvider(create: (context) => NewsProvider()),
+       ChangeNotifierProvider(create: (context) => NewsViewModel()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

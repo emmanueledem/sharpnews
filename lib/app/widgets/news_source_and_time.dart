@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class NewsSourceAndTime extends StatelessWidget {
    NewsSourceAndTime({
     Key? key, required this.source, required this.time
   }) : super(key: key);
-  String time;
+  String  time;
   String source;
   @override
   Widget build(BuildContext context) {

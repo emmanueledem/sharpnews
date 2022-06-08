@@ -4,8 +4,11 @@ import 'package:sharpnews/app/constants/colors.dart';
 import 'package:sharpnews/app/constants/images.dart';
 
 class ViewNews extends StatefulWidget {
-  const ViewNews({Key? key}) : super(key: key);
-
+  const ViewNews({
+    Key? key,
+    required this.params
+  }) : super(key: key);
+  final ReadNewsScreenData params;
   @override
   State<ViewNews> createState() => _ViewNewsState();
 }
@@ -229,4 +232,21 @@ class _ViewNewsState extends State<ViewNews> {
       ),
     );
   }
+}
+
+class ReadNewsScreenData {
+  ReadNewsScreenData(
+      {required this.title,
+      required this.description,
+      required this.author,
+      required this.image,
+      required this.ago,
+      required this.content});
+
+  final String title;
+  final String description;
+  final String author;
+  final String image;
+  final DateTime? ago;
+  final String content;
 }
