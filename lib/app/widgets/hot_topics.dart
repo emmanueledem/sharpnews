@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 import 'package:sharpnews/app/constants/colors.dart';
 import 'package:sharpnews/app/widgets/news_source_and_time.dart';
 import 'package:sharpnews/core/utils/time_utils.dart';
@@ -15,8 +16,9 @@ class HotTopics extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Logger().d(newsProvider.newsData![0].urlToImage);
     return CachedNetworkImage(
-      imageUrl: newsProvider.newsData![0].urlToImage!,
+      imageUrl: newsProvider.newsData![0].urlToImage.toString(),
       imageBuilder: (context, imageProvider) => Container(
         width: double.infinity,
         height: MediaQuery.of(context).size.height * 0.3,
@@ -60,7 +62,8 @@ class HotTopics extends StatelessWidget {
           child: CircularProgressIndicator(
         color: appbusyColor,
       )),
-      errorWidget: (context, url, error) => const Icon(Icons.error),
+      errorWidget: (context, url, error) =>
+          const Center(child: Icon(Icons.error)),
     );
   }
 }

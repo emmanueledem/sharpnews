@@ -129,7 +129,7 @@ class _ViewNewsState extends State<ViewNews> {
                             const Icon(Icons.error),
                       ),
                     )
-                  : Text(''),
+                  : const Text(''),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 43, left: 20, top: 46),
