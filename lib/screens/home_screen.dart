@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
 import 'package:sharpnews/app/constants/colors.dart';
-import 'package:sharpnews/app/constants/images.dart';
+import 'package:sharpnews/core/utils/time_utils.dart';
 import 'package:sharpnews/app/widgets/hot_topics.dart';
 import 'package:sharpnews/app/widgets/latest_news_home.dart';
 import 'package:sharpnews/app/widgets/search_bar.dart';
@@ -48,6 +48,8 @@ class _HomeScreenState extends State<HomeScreen> {
       Provider.of<NewsViewModel>(context, listen: false).init();
     });
   }
+
+    
 
   @override
   Widget build(BuildContext context) {
@@ -105,7 +107,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             ],
                           )),
-                      const SearchBar(),
+                       SearchBar(
+                        searchController: _searchController,
+                      ),
                       const SizedBox(
                         height: 16.0,
                       ),
@@ -133,14 +137,21 @@ class _HomeScreenState extends State<HomeScreen> {
                               onTap: () {
                                 Navigator.pushNamed(context, RouteName.readNews,
                                     arguments: ReadNewsScreenData(
-                                        title: newsProvider.newsData![0].title!,
-                                        description: newsProvider.newsData![0].description!,
-                                        author: newsProvider.newsData![0].author!,
-                                        image: newsProvider.newsData![0].urlToImage!,
-                                        ago: DateTime.parse(newsProvider.newsData![0].publishedAt!),
-                                        content: newsProvider.newsData![0].content!,));
+                                      title: newsProvider.newsData![0].title!,
+                                      description: newsProvider
+                                          .newsData![0].description!,
+                                      author: newsProvider.newsData![0].author!,
+                                      image:
+                                          newsProvider.newsData![0].urlToImage!,
+                                      ago: TimeUtils.ago(DateTime.parse(
+                                              newsProvider
+                                                  .newsData![0].publishedAt!)) +
+                                          ' ago',
+                                      content:
+                                          newsProvider.newsData![0].content!,
+                                    ));
                               },
-                              child: HotTopics(newsProvider: newsProvider),
+                              child: Hero(tag: "newsImage", child: HotTopics(newsProvider: newsProvider)),
                             ),
                             const SizedBox(
                               height: 40.0,
@@ -174,30 +185,48 @@ class _HomeScreenState extends State<HomeScreen> {
                             Padding(
                               padding:
                                   const EdgeInsets.only(right: 42, left: 42),
-                              child: StaggeredGrid.count(
-                                crossAxisCount: 2,
-                                mainAxisSpacing: 20,
-                                crossAxisSpacing: 20,
-                                children: [
-                                  LatestNewsHome(
-                                    title:
-                                        'News Title Lorem Ipsum Dolor Sit Amet',
-                                    image: Appset.appfighterImage,
-                                    source: 'CNN UK',
-                                    time: '1 Hour Ago',
-                                  ),
-                                  LatestNewsHome(
-                                    title:
-                                        'News Title Lorem Ipsum Dolor Sit Amet',
-                                    image: Appset.appAthleteImage,
-                                    source: 'CNN UK',
-                                    time: '1 Hour Ago',
-                                  ),
-                                  const SizedBox(
-                                    height: 100,
-                                  )
-                                ],
-                              ),
+                              child: _newsList!.isNotEmpty
+                                  ? StaggeredGrid.count(
+                                      crossAxisCount: 2,
+                                      mainAxisSpacing: 20,
+                                      crossAxisSpacing: 20,
+                                      children: _newsList
+                                          .map<Widget>((e) => GestureDetector(
+                                                onTap: () {
+                                                  Navigator.pushNamed(context,
+                                                      RouteName.readNews,
+                                                      arguments:
+                                                          ReadNewsScreenData(
+                                                        title: e.title,
+                                                        description:
+                                                            e.description,
+                                                        author: e.author,
+                                                        image: e.urlToImage,
+                                                        ago: TimeUtils.ago(
+                                                                DateTime.parse(e
+                                                                    .publishedAt!)) +
+                                                            ' ago',
+                                                        content: e.content!,
+                                                      ));
+                                                },
+                                                child: LatestNewsHome(
+                                                  title: e.title!,
+                                                  image: e.urlToImage,
+                                                  source: e.source.name!,
+                                                  time:  TimeUtils.ago(
+                                                                DateTime.parse(e
+                                                                    .publishedAt!)) +
+                                                            ' ago',
+                                                ),
+                                              ))
+                                          .toList(),
+                                    )
+                                  : const Center(
+                                      child: Text('No News Found'),
+                                    ),
+                            ),
+                            const SizedBox(
+                              height: 100,
                             )
                           ]))),
                     ],

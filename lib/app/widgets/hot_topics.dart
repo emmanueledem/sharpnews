@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:sharpnews/app/constants/colors.dart';
 import 'package:sharpnews/app/widgets/news_source_and_time.dart';
 import 'package:sharpnews/core/utils/time_utils.dart';
 import 'package:sharpnews/view_models/news/news_view_model.dart';
@@ -25,6 +26,7 @@ class HotTopics extends StatelessWidget {
             padding: const EdgeInsets.all(12),
             child: Column(
               mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   newsProvider.newsData![0].title!,
@@ -54,8 +56,10 @@ class HotTopics extends StatelessWidget {
           ),
         ),
       ),
-      placeholder: (context, url) =>
-          const Center(child: CircularProgressIndicator()),
+      placeholder: (context, url) => const Center(
+          child: CircularProgressIndicator(
+        color: appbusyColor,
+      )),
       errorWidget: (context, url, error) => const Icon(Icons.error),
     );
   }

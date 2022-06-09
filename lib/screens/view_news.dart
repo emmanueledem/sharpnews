@@ -1,13 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:sharpnews/app/constants/styles.dart';
 import 'package:sharpnews/app/constants/colors.dart';
-import 'package:sharpnews/app/constants/images.dart';
 
 class ViewNews extends StatefulWidget {
-  const ViewNews({
-    Key? key,
-    required this.params
-  }) : super(key: key);
+  const ViewNews({Key? key, required this.params}) : super(key: key);
   final ReadNewsScreenData params;
   @override
   State<ViewNews> createState() => _ViewNewsState();
@@ -41,11 +38,11 @@ class _ViewNewsState extends State<ViewNews> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.only(right: 33, left: 29),
+            Padding(
+              padding: const EdgeInsets.only(right: 33, left: 29),
               child: Text(
-                'INDvENG Tests to be played in front of crowd',
-                style: TextStyle(
+                widget.params.title.toString(),
+                style: const TextStyle(
                     fontSize: 28,
                     fontStyle: FontStyle.normal,
                     fontWeight: FontWeight.w500,
@@ -96,15 +93,15 @@ class _ViewNewsState extends State<ViewNews> {
                 ],
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(
+            Padding(
+              padding: const EdgeInsets.only(
                 right: 33,
                 top: 26,
                 left: 32,
               ),
               child: Text(
-                'Samsung\'s next Unpacked event reportedly lands August 11',
-                style: TextStyle(
+                widget.params.description.toString(),
+                style: const TextStyle(
                     fontSize: 17,
                     fontStyle: FontStyle.normal,
                     fontWeight: FontWeight.w400,
@@ -114,14 +111,30 @@ class _ViewNewsState extends State<ViewNews> {
             const SizedBox(
               height: 14,
             ),
-            const Padding(
-              padding: EdgeInsets.only(right: 30, left: 31),
-              child: Image(image: AssetImage(Appset.athletesImg)),
+            Padding(
+              padding: const EdgeInsets.only(right: 30, left: 31),
+              child: widget.params.title != null
+                  ? Hero(
+                      tag: 'newsImage',
+                      child: CachedNetworkImage(
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                        height: MediaQuery.of(context).size.height * 0.3,
+                        imageUrl: widget.params.image.toString(),
+                        progressIndicatorBuilder:
+                            (context, url, downloadProgress) => Center(
+                                child: CircularProgressIndicator(
+                                    value: downloadProgress.progress)),
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.error),
+                      ),
+                    )
+                  : Text(''),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 43, left: 20, top: 46),
               child: Text(
-                'The 5-Test series between India & England is set to be played in front of packed..The 5-Test series between India & England is set to be played in front of packed..The 5-Test series between India & England is set to be played in front of packed..The 5-Test series between India & England is set to be played in front of packed..The 5-Test series between India & England is set to be played in front of packed..The 5-Test series between India & England is set to be played in front of packed..',
+                widget.params.content.toString(),
                 style: TextStyle(
                     fontSize: 17,
                     fontStyle: FontStyle.normal,
@@ -130,9 +143,9 @@ class _ViewNewsState extends State<ViewNews> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 98, left: 99, top: 48),
+              padding: const EdgeInsets.only(top: 48),
               child: Text(
-                'Published July 5, 2021 - 8:16 pm IST',
+                widget.params.ago.toString(),
                 style: TextStyle(
                     fontSize: 12,
                     fontStyle: FontStyle.normal,
@@ -140,27 +153,30 @@ class _ViewNewsState extends State<ViewNews> {
                     color: const Color(0xffFFFFFF).withOpacity(0.3)),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(right: 148, left: 148, top: 4),
+            Padding(
+              padding: const EdgeInsets.only(top: 4),
               child: Text(
-                'by John Abraham',
-                style: TextStyle(
+                widget.params.author.toString(),
+                style: const TextStyle(
                     fontSize: 12,
                     fontStyle: FontStyle.normal,
                     fontWeight: FontWeight.w400,
                     color: Color(0xffFFFFFF)),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(right: 148, left: 148, top: 15),
-              child: Text('Back To Top',
-                  style: TextStyle(
-                    decoration: TextDecoration.underline,
-                    fontSize: 12,
-                    fontStyle: FontStyle.normal,
-                    fontWeight: FontWeight.w400,
-                    color: Color(0xffB10009),
-                  )),
+            GestureDetector(
+              onTap: () {},
+              child: const Padding(
+                padding: EdgeInsets.only(top: 15),
+                child: Text('Back To Top',
+                    style: TextStyle(
+                      decoration: TextDecoration.underline,
+                      fontSize: 12,
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xffB10009),
+                    )),
+              ),
             ),
             Padding(
                 padding: const EdgeInsets.only(right: 31, left: 32, top: 48),
@@ -247,6 +263,6 @@ class ReadNewsScreenData {
   final String? description;
   final String? author;
   final String? image;
-  final DateTime? ago;
+  final String? ago;
   final String? content;
 }

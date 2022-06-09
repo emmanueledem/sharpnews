@@ -1,15 +1,28 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:sharpnews/app/constants/images.dart';
 
+// ignore: must_be_immutable
 class AllLatestNews extends StatelessWidget {
-  const AllLatestNews({
+  AllLatestNews({
     Key? key,
+    required this.image,
+    required this.title,
+    required this.source,
+    required this.time,
+    required this.description,
   }) : super(key: key);
+
+  String? image;
+  String? title;
+  String? source;
+  String? time;
+  String? description;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 2),
+      padding: const EdgeInsets.only(bottom: 20, left: 23, right: 24, top: 20),
       child: Column(
         children: [
           Row(
@@ -17,19 +30,18 @@ class AllLatestNews extends StatelessWidget {
             children: [
               Expanded(
                 child: Column(
-                  children: const [
+                  children: [
                     Text(
-                      'INDvENG Tests to be played in front of crowd',
-                      style: TextStyle(
+                      title.toString(),
+                      style: const TextStyle(
                           fontSize: 17,
                           fontStyle: FontStyle.normal,
                           fontWeight: FontWeight.w500,
                           color: Color(0xffC4C4C4)),
                     ),
-                    SizedBox(height: 9),
-                    Text(
-                        'The 5-Test series between India & England is set to be played in front of packed..',
-                        style: TextStyle(
+                    const SizedBox(height: 9),
+                    Text(description!,
+                        style: const TextStyle(
                             fontSize: 14,
                             fontStyle: FontStyle.normal,
                             fontWeight: FontWeight.w400,
@@ -37,7 +49,17 @@ class AllLatestNews extends StatelessWidget {
                   ],
                 ),
               ),
-              const Image(image: AssetImage(Appset.cricketMan))
+              CachedNetworkImage(
+                fit: BoxFit.cover,
+                width: 100,
+                height: 100,
+                imageUrl: image.toString(),
+                progressIndicatorBuilder: (context, url, downloadProgress) =>
+                    Center(
+                        child: CircularProgressIndicator(
+                            value: downloadProgress.progress)),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+              ),
             ],
           ),
           const SizedBox(height: 20),
@@ -46,26 +68,26 @@ class AllLatestNews extends StatelessWidget {
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
-                  Text('Sport Biz',
-                      style: TextStyle(
+                children: [
+                  Text(source!,
+                      style: const TextStyle(
                           fontSize: 12,
                           fontStyle: FontStyle.normal,
                           fontWeight: FontWeight.w400,
                           color: Color(0xffC4C4C4))),
-                  SizedBox(
+                  const SizedBox(
                     width: 19.36,
                   ),
-                  Image(
+                  const Image(
                       width: 2.03,
                       height: 2,
                       color: Color(0xff2F9FF8),
                       image: AssetImage(Appset.ellipseImg)),
-                  SizedBox(
+                  const SizedBox(
                     width: 19.36,
                   ),
-                  Text('7 hours ago',
-                      style: TextStyle(
+                  Text(time!,
+                      style: const TextStyle(
                           fontSize: 12,
                           fontStyle: FontStyle.normal,
                           fontWeight: FontWeight.w400,

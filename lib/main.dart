@@ -5,16 +5,18 @@ import 'package:provider/provider.dart';
 import 'package:sharpnews/screens/splash_screen.dart';
 import 'package:sharpnews/view_models/news/news_view_model.dart';
 
+import 'core/navigators/router.dart';
+
 bool kReleaseMode = false;
 
 void main() async {
-    WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load();
 
   runApp(
     DevicePreview(
       builder: (context) => const MyApp(),
-      enabled: !kReleaseMode,
+      enabled: kReleaseMode,
     ),
   );
 }
@@ -27,7 +29,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-       ChangeNotifierProvider(create: (context) => NewsViewModel()),
+        ChangeNotifierProvider(create: (context) => NewsViewModel()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -35,6 +37,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
+        onGenerateRoute: Routers.generateRoute,
         home: const SplashScreen(),
       ),
     );
